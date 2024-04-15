@@ -1,0 +1,69 @@
+---
+title: "How to Create EDIT Data Frame"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to Create EDIT Data Frame}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE, 
+  echo = FALSE,
+  eval = FALSE
+)
+```
+
+# Introduction
+
+This vignette will show you how to create the final EDIT data frame from a list of references and a list of objects. I've included two data sets in this package, both of which I pulled from the [EDIT website][https://edit.wti.org/document/investment-treaty/search]. The first data set is a list of all the IIAs in the EDIT data base, and the second data set is a list of all the IIAs with preambles. 
+
+```{r setup}
+library(isds)
+```
+
+
+# Load Data
+
+Load the two data frames needed for this minimum reproducible example. These two data frames come pre-loaded in the package. 
+
+```{r}
+#data(full_edit_data)
+#data(preamble)
+
+```
+
+# Create Data List
+
+Once you load the necessary data, the first step is to create the data list you'll use to create the final EDIT data frame. Make sure to include any objects you'd like to exclude from the list in the `excluded_objects` argument. If you don't exclude any objects other than the necessary data frames, the code bellow will not run. 
+
+Please note that the `create_data_list` function excludes `full_edit_data` and `exclude_objects` by default. This is because including the `full_edit_data` object is the object to which we are appending data, so including it in the final function would add redundancy. If you don't exclude the `exclude_objects` object, the function below will not run either. 
+
+
+```{r}
+exclude_objects <- c("full_edit_data", "exclude_objects")
+
+data_list <- create_data_list(exclude_objects = c("full_edit_data"))
+```
+
+# Create Final Data Frame
+
+This is the key step in creating the final EDIT data frame. The `iterate_references` function takes the data list and the objects you'd like to include in the final data frame and returns the final data frame. Note that the `included_objects` vector was automatically added to your global environment when you ran the `create_data_list` function. 
+
+```{r}
+full_edit_data <- iterate_references(full_edit_data, data_list, included_objects)
+```
+
+```{r}
+head(final_edit_data)
+```
+
+```{r}
+
+```
+
+

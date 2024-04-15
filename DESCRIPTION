@@ -1,0 +1,21 @@
+Package: isds
+Title: Houses relevant R code and functions for ISDS project
+Version: 0.0.0.9000
+Authors@R: 
+    person("Kevin", "Navarrete-Parra", , "navark4@unlv.nevada.edu", role = c("aut", "cre"))
+Description: This package houses the relevant R code and functions used for the ISDS project. Here, you'll find code useful to anything relating to the UNCTAD data set. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    magrittr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+URL: https://github.com/knavarrete-noble/isds
+BugReports: https://github.com/knavarrete-noble/isds/issues
