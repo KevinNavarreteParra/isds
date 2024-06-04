@@ -10,3 +10,4 @@ devtools::install_github("KevinNavarreteParra/isds")
 ```
 
 For information on how to use this package for updating the EDIT data frame, please see the vignette.
+ 
